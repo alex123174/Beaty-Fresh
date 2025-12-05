@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Login Successful</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card success-card">
+            <div class="logo-section">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h1>Login Successful!</h1>
+                <p class="welcome-message" id="welcome-message">Welcome back to your account</p>
+            </div>
+
+            <div class="success-details">
+                <div class="detail-item">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value success-badge" data-testid="status-badge">Verified</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Login Time</span>
+                    <span class="detail-value" id="login-time" data-testid="login-time"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Method</span>
+                    <span class="detail-value" id="login-method" data-testid="login-method">Social Login</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="submit-btn" data-testid="continue-dashboard-btn" onclick="continueToDashboard()">
+                    Successfully Logged In
+                </button>
+                <button class="submit-btn secondary-btn" data-testid="logout-btn" onclick="logout()">
+                    Proceed to the collaboration form
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display current time
+        const now = new Date();
+        const timeString = now.toLocaleString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+        document.getElementById('login-time').textContent = timeString;
+
+        // Display user info
+        const fbUser = sessionStorage.getItem('fbUser');
+        const icloudUser = sessionStorage.getItem('icloudUser');
+        
+        if (fbUser) {
+            document.getElementById('welcome-message').textContent = `Welcome back, ${fbUser}!`;
+            document.getElementById('login-method').textContent = 'Facebook Login';
+        } else if (icloudUser) {
+            document.getElementById('welcome-message').textContent = `Welcome back, ${icloudUser}!`;
+            document.getElementById('login-method').textContent = 'iCloud Login';
+        }
+
+        function continueToDashboard() {
+            alert('Redirecting to main dashboard...');
+            // In a real app, this would redirect to your main application
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'collab-form.html';
+        }
+    </script>
+</body>
+</html>
