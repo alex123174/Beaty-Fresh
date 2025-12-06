@@ -1,118 +1,1966 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <link rel="icon" type="image/jpeg"
-href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIACAAIAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAFAAQH/8QAJBAAAgEEAQQCAwAAAAAAAAAAAQIRAAMEITESE2GhgZFBQnL/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABgRAAMBAQAAAAAAAAAAAAAAAAABAjER/9oADAMBAAIRAxEAPwDuNVFZ+PlXMxmsoxUhIcECIJnfVI143WZVyx2ce1ZZbtsd1hpZIiASGI3DDdCpdHqqDyS7qLL27pNtWskng3GZek/W580hZxmt5jEFhjqoNtJ0GMhvQEf0fgGmtNZmDHNHHB773Ou+5cPDNx+mhA42ZpKqhZpzgXewbgXpWWVRLNO2gGPz590oDIkcVVUFU60//9k=">
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeautyFresh – Official</title>
-<style>
-body {
-  margin: 0;
-  font-family: Poppins, sans-serif;
-  background: #fff;
-  color: #333;
-  text-align: center;
-}
-
-/* Header */
-header {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 20px;
-  font-size: 26px;
-  font-weight: bold;
-}
-header span { color: #ff7ca8; }
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(120deg, #ffb6c1, #ffe6ee);
-  padding: 100px 20px;
-  color: #222;
-}
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-.hero p {
-  font-size: 18px;
-  max-width: 600px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
-}
-.hero a {
-  display: inline-block;
-  background: #ff7ca8;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.hero a:hover {
-  background: #ff4f9a;
-  transform: scale(1.05);
-}
-
-/* Collaboration Section */
-.collab {
-  padding: 80px 20px;
-  background: #fafafa;
-}
-.collab h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-.collab p {
-  max-width: 700px;
-  margin: 0 auto 20px;
-  line-height: 1.7;
-  font-size: 17px;
-  color: #555;
-}
-.collab a {
-  color: #ff7ca8;
-  text-decoration: none;
-  font-weight: 600;
-}
-.collab a:hover {
-  text-decoration: underline;
-}
-
-/* Footer */
-footer {
-  background: #ff7ca8;
-  color: white;
-  padding: 20px;
-  font-size: 14px;
-  margin-top: 60px;
-}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyFresh - Premium Makeup Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            overflow-x: hidden;
+        }
+        
+        /* App Container */
+        .app {
+            min-height: 100vh;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #f43f5e, #ec4899);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #e11d48, #db2777);
+        }
+        
+        /* Prevent text selection on buttons */
+        button {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Image loading animation */
+        img {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Hover effects for links */
+        a {
+            position: relative;
+            text-decoration: none;
+        }
+        
+        /* Card hover shadow */
+        .card-hover {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            box-shadow: 0 20px 40px rgba(244, 63, 94, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #ffe4e6;
+        }
+        
+        .header-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .header-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #fb7185, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 1.875rem;
+            }
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: #f43f5e;
+        }
+        
+        .desktop-actions {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .desktop-actions {
+                display: flex;
+            }
+        }
+        
+        .icon-button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+        
+        .icon-button:hover {
+            background-color: #fff1f2;
+        }
+        
+        .fill-up-button {
+            background: linear-gradient(to right, #fb7185, #f472b6);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .fill-up-button:hover {
+            background: linear-gradient(to right, #f43f5e, #ec4899);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu-button {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-button:hover {
+            background-color: #fff1f2;
+        }
+        
+        .mobile-menu {
+            background-color: white;
+            border-top: 1px solid #ffe4e6;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem 1rem;
+        }
+        
+        /* Hero Styles */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            background: linear-gradient(to bottom, #fff1f2, white);
+        }
+        
+        @media (min-width: 640px) {
+            .hero {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .hero-container {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        
+        .hero-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #ffe4e6;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+        
+        .hero-badge-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #be123c;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #111827;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.75rem;
+            }
+        }
+        
+        .hero-gradient {
+            display: block;
+            background: linear-gradient(to right, #f43f5e, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.75;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+        
+        .primary-button {
+            background: linear-gradient(to right, #f43f5e, #ec4899);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 9999px;
+            border: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .primary-button:hover {
+            background: linear-gradient(to right, #e11d48, #db2777);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .secondary-button {
+            border: 2px solid #fbcfe8;
+            color: #be123c;
+            padding: 1.5rem 2rem;
+            border-radius: 9999px;
+            background: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .secondary-button:hover {
+            background-color: #fff1f2;
+        }
+        
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-top: 1rem;
+        }
+        
+        .hero-image-container {
+            position: relative;
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 10;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .hero-blob-1 {
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(to bottom right, #fca5a5, #f9a8d4);
+            border-radius: 9999px;
+            opacity: 0.5;
+            filter: blur(2rem);
+        }
+        
+        .hero-blob-2 {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -1.5rem;
+            width: 8rem;
+            height: 8rem;
+            background: linear-gradient(to bottom right, #f9a8d4, #fca5a5);
+            border-radius: 9999px;
+            opacity: 0.5;
+            filter: blur(2rem);
+        }
+        
+        /* Products Styles */
+        .products {
+            padding: 5rem 1rem;
+            background-color: white;
+        }
+        
+        @media (min-width: 640px) {
+            .products {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .products {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .products-container {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+        
+        .section-gradient {
+            display: block;
+            background: linear-gradient(to right, #f43f5e, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-description {
+            font-size: 1.125rem;
+            color: #4b5563;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .product-card {
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            border-color: #fbcfe8;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-0.5rem);
+        }
+        
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #f43f5e;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #111827;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-card:hover .product-name {
+            color: #f43f5e;
+        }
+        
+        .product-description {
+            font-size: 0.875rem;
+            color: #4b5563;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .stars-container {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .star {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        .star-filled {
+            color: #fbbf24;
+            fill: #fbbf24;
+        }
+        
+        .star-empty {
+            color: #d1d5db;
+        }
+        
+        .rating-value {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-left: 0.5rem;
+        }
+        
+        .reviews-count {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .product-footer {
+            padding: 1.5rem;
+            padding-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+        }
+        
+        .add-to-cart-button {
+            background: linear-gradient(to right, #f43f5e, #ec4899);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .add-to-cart-button:hover {
+            background: linear-gradient(to right, #e11d48, #db2777);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Reviews Styles */
+        .reviews {
+            padding: 5rem 1rem;
+            background: linear-gradient(to bottom, white, #fff1f2);
+        }
+        
+        @media (min-width: 640px) {
+            .reviews {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .reviews {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .reviews-container {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        .review-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background-color: white;
+            transition: all 0.3s;
+        }
+        
+        .review-card:hover {
+            border-color: #fbcfe8;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-0.5rem);
+        }
+        
+        .review-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .quote-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: #fbcfe8;
+        }
+        
+        .review-stars {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .review-star {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .review-text {
+            color: #374151;
+            line-height: 1.75;
+            font-style: italic;
+        }
+        
+        .review-author {
+            padding-top: 1rem;
+            border-top: 1px solid #f3f4f6;
+        }
+        
+        .review-author-name {
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .review-product-name {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .overall-rating {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .rating-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            border: 1px solid #ffe4e6;
+        }
+        
+        .overall-stars {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .overall-star {
+            width: 2rem;
+            height: 2rem;
+            color: #fbbf24;
+            fill: #fbbf24;
+        }
+        
+        .average-rating {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #111827;
+        }
+        
+        .rating-label {
+            color: #4b5563;
+        }
+        
+        .rating-subtext {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        /* Collaborations Styles */
+        .collaborations {
+            padding: 5rem 1rem;
+            background-color: white;
+        }
+        
+        @media (min-width: 640px) {
+            .collaborations {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .collaborations {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .collaborations-container {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        
+        .collaborations-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: #ffe4e6;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .collaborations-badge-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #be123c;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .partners-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        .partner-card {
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+        
+        .partner-card:hover {
+            border-color: #fbcfe8;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-0.5rem);
+        }
+        
+        .partner-image-container {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .partner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .partner-card:hover .partner-image {
+            transform: scale(1.1);
+        }
+        
+        .partner-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+        }
+        
+        .partner-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .partner-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        
+        .partner-type {
+            font-size: 0.875rem;
+            color: #fbcfe8;
+        }
+        
+        .partner-description {
+            padding: 1.5rem;
+            color: #4b5563;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        .benefit-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: linear-gradient(to bottom right, #fff1f2, #fce7f3);
+            border: 1px solid #ffe4e6;
+            transition: box-shadow 0.3s;
+        }
+        
+        .benefit-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+        }
+        
+        .benefit-text {
+            color: #4b5563;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #111827;
+            color: white;
+        }
+        
+        .footer-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .footer-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #fb7185, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-description {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #1f2937;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #f43f5e;
+        }
+        
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-link:hover {
+            color: #fb7185;
+        }
+        
+        .footer-contact {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .contact-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #fb7185;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        
+        .contact-text {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+        }
+        
+        .copyright {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none;
+        }
+        
+        .toast.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50%) translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .md\\:hidden {
+                display: none;
+            }
+            
+            .md\\:flex {
+                display: flex;
+            }
+            
+            .md\\:block {
+                display: block;
+            }
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        
+        .duration-300 {
+            transition-duration: 300ms;
+        }
+        
+        .duration-500 {
+            transition-duration: 500ms;
+        }
+        
+        .transform {
+            transform: translateY(0);
+        }
+        
+        .hover\\:scale-105:hover {
+            transform: scale(1.05);
+        }
+        
+        .hover\\:scale-110:hover {
+            transform: scale(1.1);
+        }
+        
+        .hover\\:-translate-y-2:hover {
+            transform: translateY(-0.5rem);
+        }
+        
+        .shadow-md {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .shadow-lg {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover\\:shadow-lg:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover\\:shadow-xl:hover {
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+        
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+        
+        .rounded-3xl {
+            border-radius: 1.5rem;
+        }
+        
+        .aspect-square {
+            aspect-ratio: 1 / 1;
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .group:hover .group-hover\\:scale-110 {
+            transform: scale(1.1);
+        }
+        
+        .group:hover .group-hover\\:text-rose-600 {
+            color: #f43f5e;
+        }
+    </style>
 </head>
 <body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="header-content">
+                    <!-- Logo -->
+                    <div class="logo">BeautyFresh</div>
 
-<header>BEAUTY<span>fresh</span></header>
+                    <!-- Desktop Navigation -->
+                    <nav class="desktop-nav">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#products" class="nav-link">Products</a>
+                        <a href="#reviews" class="nav-link">Reviews</a>
+                        <a href="#collaborations" class="nav-link">Collaborations</a>
+                    </nav>
 
-<section class="hero">
-  <h1>Welcome to BeautyFresh</h1>
-  <p>Discover a radiant new you with our exclusive collection of brightening, hydrating, and rejuvenating skincare essentials.</p>
-  <a href="login.html">✨ Fill Up Application Data</a>
+                    <!-- Desktop Actions -->
+                    <div class="desktop-actions">
+                        <button class="icon-button">
+                            <svg class="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                        <button class="icon-button">
+                            <svg class="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                        </button>
+                        <button class="fill-up-button" id="fillUpBtn">FILL UP</button>
+                    </div>
 
-</section>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-button" id="mobileMenuBtn">
+                        <svg class="w-6 h-6 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
 
-<section class="collab">
-  <h2>Collaborate with Us</h2>
-  <p>BeautyFresh is passionate about partnering with influencers, skincare experts, and beauty brands who share our vision of confidence through natural glow. We welcome creative collaborations — from social media features to product showcases and ambassador programs.</p>
-  <p>If you’d love to work with us, please reach out via <a href="mailto:collab@beautyfresh.co.uk">collab@beautyfresh.co.uk</a> message the assistant on facebook <strong>Shai Mae Rosales</strong>.</p>
-</section>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu hidden" id="mobileMenu">
+                <nav class="mobile-nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                    <a href="#collaborations" class="nav-link">Collaborations</a>
+                    <button class="fill-up-button w-full py-3" id="mobileFillUpBtn">FILL UP</button>
+                </nav>
+            </div>
+        </header>
 
-<footer>
-  © 2025 BeautyFresh. All Rights Reserved.
-</footer>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-grid">
+                    <!-- Left Content -->
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <span class="hero-badge-text">New Collection 2025</span>
+                        </div>
+                        
+                        <h2 class="hero-title">
+                            Discover Your
+                            <span class="hero-gradient">Natural Beauty</span>
+                        </h2>
+                        
+                        <p class="hero-description">
+                            Premium makeup products crafted with care. Enhance your natural beauty with our curated collection of high-quality cosmetics.
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <button class="primary-button" id="heroFillUpBtn">FILL UP NOW</button>
+                            <button class="secondary-button" id="exploreProductsBtn">Explore Products</button>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="hero-stats">
+                            <div>
+                                <div class="stars-container">
+                                    <svg class="star star-filled" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    <svg class="star star-filled" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    <svg class="star star-filled" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    <svg class="star star-filled" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    <svg class="star star-filled" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">10,000+ Reviews</p>
+                            </div>
+                            <div class="border-l border-gray-300 pl-8">
+                                <p class="text-2xl font-bold text-gray-900">50+</p>
+                                <p class="text-sm text-gray-600">Premium Products</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Image -->
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=700&fit=crop" alt="BeautyFresh Products">
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="hero-blob-1"></div>
+                        <div class="hero-blob-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="products-container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h2 class="section-title">
+                        Our Premium
+                        <span class="section-gradient">Makeup Collection</span>
+                    </h2>
+                    <p class="section-description">
+                        Discover our carefully curated selection of high-quality makeup products designed to enhance your natural beauty.
+                    </p>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews">
+            <div class="reviews-container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h2 class="section-title">
+                        What Our Customers
+                        <span class="section-gradient">Are Saying</span>
+                    </h2>
+                    <p class="section-description">
+                        Join thousands of satisfied customers who trust BeautyFresh for their makeup needs.
+                    </p>
+                </div>
+
+                <!-- Reviews Grid -->
+                <div class="reviews-grid" id="reviewsGrid">
+                    <!-- Reviews will be populated by JavaScript -->
+                </div>
+
+                <!-- Overall Rating -->
+                <div class="overall-rating">
+                    <div class="rating-box">
+                        <div class="overall-stars">
+                            <svg class="overall-star" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <svg class="overall-star" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <svg class="overall-star" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <svg class="overall-star" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <svg class="overall-star" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="average-rating">4.8</p>
+                            <p class="rating-label">Average Rating</p>
+                        </div>
+                        <p class="rating-subtext">Based on 10,000+ reviews</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaborations Section -->
+        <section id="collaborations" class="collaborations">
+            <div class="collaborations-container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <div class="collaborations-badge">
+                        <svg class="w-5 h-5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span class="collaborations-badge-text">Partnerships</span>
+                    </div>
+                    
+                    <h2 class="section-title">
+                        BeautyFresh
+                        <span class="section-gradient">Collaborations</span>
+                    </h2>
+                    <p class="section-description">
+                        We partner with industry leaders and beauty experts to bring you the best products and experiences.
+                    </p>
+                </div>
+
+                <!-- Collaboration Partners -->
+                <div class="partners-grid" id="partnersGrid">
+                    <!-- Partners will be populated by JavaScript -->
+                </div>
+
+                <!-- Collaboration Benefits -->
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Expert Partnerships</h3>
+                        <p class="benefit-text">
+                            Collaborating with professional makeup artists and beauty influencers worldwide.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Award-Winning Quality</h3>
+                        <p class="benefit-text">
+                            Recognized by leading beauty magazines and industry awards for excellence.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg class="w-8 h-8 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Sustainable Beauty</h3>
+                        <p class="benefit-text">
+                            Committed to eco-friendly practices and cruelty-free products with our partners.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Brand -->
+                    <div class="footer-brand">
+                        <h3 class="footer-logo">BeautyFresh</h3>
+                        <p class="footer-description">
+                            Premium makeup products for your natural beauty. Quality you can trust, beauty you can feel.
+                        </p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home" class="footer-link">Home</a></li>
+                            <li><a href="#products" class="footer-link">Products</a></li>
+                            <li><a href="#reviews" class="footer-link">Reviews</a></li>
+                            <li><a href="#collaborations" class="footer-link">Collaborations</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Customer Service</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Shipping Info</a></li>
+                            <li><a href="#" class="footer-link">Returns Policy</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Contact Us</h4>
+                        <ul class="footer-contact">
+                            <li class="contact-item">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span class="contact-text">123 Beauty Street, London, UK</span>
+                            </li>
+                            <li class="contact-item">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <span class="contact-text">+44 20 1234 5678</span>
+                            </li>
+                            <li class="contact-item">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span class="contact-text">hello@beautyfresh.co.uk</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 BeautyFresh. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Redirecting to login page...</div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mock data from file #1
+        const mockProducts = [
+            {
+                id: 1,
+                name: "Radiant Glow Foundation",
+                category: "Face",
+                price: 32.99,
+                rating: 4.8,
+                reviews: 1247,
+                image: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400&h=400&fit=crop",
+                description: "Long-lasting, buildable coverage with a natural finish"
+            },
+            {
+                id: 2,
+                name: "Velvet Matte Lipstick",
+                category: "Lips",
+                price: 18.99,
+                rating: 4.9,
+                reviews: 2103,
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop",
+                description: "Rich, pigmented color with a comfortable matte finish"
+            },
+            {
+                id: 3,
+                name: "Luminous Eye Shadow Palette",
+                category: "Eyes",
+                price: 45.99,
+                rating: 4.7,
+                reviews: 856,
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop",
+                description: "12 stunning shades from nude to bold for any look"
+            },
+            {
+                id: 4,
+                name: "Blush & Glow Duo",
+                category: "Face",
+                price: 24.99,
+                rating: 4.6,
+                reviews: 634,
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop",
+                description: "Cream-to-powder formula for a natural, radiant flush"
+            },
+            {
+                id: 5,
+                name: "Volume Boost Mascara",
+                category: "Eyes",
+                price: 21.99,
+                rating: 4.9,
+                reviews: 1876,
+                image: "https://images.unsplash.com/photo-1631730486572-226d1f595b68?w=400&h=400&fit=crop",
+                description: "Dramatic volume and length without clumping"
+            },
+            {
+                id: 6,
+                name: "Hydrating Lip Gloss Set",
+                category: "Lips",
+                price: 28.99,
+                rating: 4.5,
+                reviews: 421,
+                image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop",
+                description: "3-piece set with shine and nourishing ingredients"
+            },
+            {
+                id: 7,
+                name: "Precision Eyeliner Pen",
+                category: "Eyes",
+                price: 15.99,
+                rating: 4.8,
+                reviews: 1092,
+                image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop",
+                description: "Ultra-fine tip for perfect lines every time"
+            },
+            {
+                id: 8,
+                name: "Setting Spray Mist",
+                category: "Face",
+                price: 26.99,
+                rating: 4.7,
+                reviews: 978,
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop",
+                description: "All-day wear with a lightweight, refreshing finish"
+            }
+        ];
+
+        const collaborationPartners = [
+            {
+                id: 1,
+                name: "Sarah's Beauty Studio",
+                type: "Professional MUA",
+                image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop",
+                description: "Exclusive makeup tutorials and product recommendations"
+            },
+            {
+                id: 2,
+                name: "GlamourLife Magazine",
+                type: "Media Partner",
+                image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=300&h=300&fit=crop",
+                description: "Featured in monthly beauty editorials and trend guides"
+            },
+            {
+                id: 3,
+                name: "EcoBeauty Collective",
+                type: "Sustainability Partner",
+                image: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=300&h=300&fit=crop",
+                description: "Committed to eco-friendly and cruelty-free beauty"
+            }
+        ];
+
+        const featuredReviews = [
+            {
+                id: 1,
+                productName: "Radiant Glow Foundation",
+                userName: "Emily R.",
+                rating: 5,
+                comment: "This foundation is absolutely amazing! Perfect coverage and feels so lightweight.",
+                date: "2025-01-15"
+            },
+            {
+                id: 2,
+                productName: "Velvet Matte Lipstick",
+                userName: "Jessica M.",
+                rating: 5,
+                comment: "Best matte lipstick I've ever used. Stays on all day and doesn't dry out my lips!",
+                date: "2025-01-12"
+            },
+            {
+                id: 3,
+                productName: "Volume Boost Mascara",
+                userName: "Amanda K.",
+                rating: 5,
+                comment: "My lashes look incredible! No clumping and amazing volume.",
+                date: "2025-01-10"
+            }
+        ];
+
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const fillUpBtn = document.getElementById('fillUpBtn');
+        const mobileFillUpBtn = document.getElementById('mobileFillUpBtn');
+        const heroFillUpBtn = document.getElementById('heroFillUpBtn');
+        const exploreProductsBtn = document.getElementById('exploreProductsBtn');
+        const productsGrid = document.getElementById('productsGrid');
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        const partnersGrid = document.getElementById('partnersGrid');
+        const toast = document.getElementById('toast');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Change icon based on state
+            const icon = mobileMenuBtn.querySelector('svg');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+            } else {
+                icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('svg');
+                icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+            }
+        });
+
+        // Handle Fill Up button clicks
+        function handleFillUpClick() {
+            showToast('Redirecting to login page...');
+            
+            // In production, this would redirect to login.html
+            setTimeout(() => {
+                console.log('Redirect to: /login.html');
+                // window.location.href = '/login.html';
+            }, 1000);
+        }
+
+        // Attach event listeners to all Fill Up buttons
+        [fillUpBtn, mobileFillUpBtn, heroFillUpBtn].forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', handleFillUpClick);
+            }
+        });
+
+        // Explore Products button
+        exploreProductsBtn.addEventListener('click', () => {
+            document.getElementById('products').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Toast notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Render stars
+        function renderStars(rating, size = 'small') {
+            const starSize = size === 'large' ? 'w-5 h-5' : 'w-4 h-4';
+            let starsHTML = '';
+            
+            for (let i = 0; i < 5; i++) {
+                if (i < Math.floor(rating)) {
+                    starsHTML += `<svg class="star star-filled ${starSize}" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`;
+                } else {
+                    starsHTML += `<svg class="star star-empty ${starSize}" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`;
+                }
+            }
+            
+            return `<div class="stars-container">${starsHTML}<span class="rating-value">${rating}</span></div>`;
+        }
+
+        // Render products
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            mockProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-category">${product.category}</div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-rating">
+                            ${renderStars(product.rating)}
+                            <span class="reviews-count">(${product.reviews})</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-footer">
+                        <span class="product-price">$${product.price}</span>
+                        <button class="add-to-cart-button" data-id="${product.id}">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            Add
+                        </button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+                
+                // Add event listener to Add to Cart button
+                const addToCartBtn = productCard.querySelector('.add-to-cart-button');
+                addToCartBtn.addEventListener('click', () => {
+                    showToast(`Added ${product.name} to cart!`);
+                });
+            });
+        }
+
+        // Render reviews
+        function renderReviews() {
+            reviewsGrid.innerHTML = '';
+            
+            featuredReviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.innerHTML = `
+                    <div class="review-content">
+                        <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 11h-4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.3-1.5 4.5-4 5"></path>
+                            <path d="M22 11h-4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.3-1.5 4.5-4 5"></path>
+                        </svg>
+                        
+                        <div class="review-stars">
+                            ${Array.from({ length: 5 }, (_, i) => 
+                                `<svg class="review-star ${i < review.rating ? 'star-filled' : 'star-empty'}" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`
+                            ).join('')}
+                        </div>
+                        
+                        <p class="review-text">"${review.comment}"</p>
+                        
+                        <div class="review-author">
+                            <p class="review-author-name">${review.userName}</p>
+                            <p class="review-product-name">${review.productName}</p>
+                        </div>
+                    </div>
+                `;
+                
+                reviewsGrid.appendChild(reviewCard);
+            });
+        }
+
+        // Render partners
+        function renderPartners() {
+            partnersGrid.innerHTML = '';
+            
+            collaborationPartners.forEach(partner => {
+                const partnerCard = document.createElement('div');
+                partnerCard.className = 'partner-card';
+                partnerCard.innerHTML = `
+                    <div class="partner-image-container">
+                        <img src="${partner.image}" alt="${partner.name}" class="partner-image">
+                        <div class="partner-image-overlay"></div>
+                        <div class="partner-info">
+                            <h3 class="partner-name">${partner.name}</h3>
+                            <p class="partner-type">${partner.type}</p>
+                        </div>
+                    </div>
+                    <div class="partner-description">${partner.description}</div>
+                `;
+                
+                partnersGrid.appendChild(partnerCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderReviews();
+            renderPartners();
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuBtn.querySelector('svg');
+                        icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
