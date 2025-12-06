@@ -1781,14 +1781,13 @@
             }
         });
 
-        // Handle Fill Up button clicks
+        // Handle Fill Up button clicks - REDIRECT TO LOGIN.HTML
         function handleFillUpClick() {
             showToast('Redirecting to login page...');
             
-            // In production, this would redirect to login.html
+            // Redirect to login.html after a short delay
             setTimeout(() => {
-                console.log('Redirect to: /login.html');
-                // window.location.href = '/login.html';
+                window.location.href = 'login.html';
             }, 1000);
         }
 
